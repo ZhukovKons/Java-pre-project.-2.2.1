@@ -31,8 +31,7 @@ public class UserDaoImp implements UserDao {
     @Override
     public User getUserByCar(Car car){
         try (Session session = sessionFactory.openSession()) {
-            System.out.println("Достаёт юзера из базы данных по машине");   //
-            // TODO getUserByCar() "C этим думаю разберусь"
+            System.out.println("Достаёт юзера из базы данных по машине");   //TODO getUserByCar() "C этим думаю разберусь"
         }
         return null;
     }
