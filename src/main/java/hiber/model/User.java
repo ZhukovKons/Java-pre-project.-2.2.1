@@ -19,8 +19,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)        //forMentor*  обозначаю, что это поле 1к1, и явялется главнным, т.е. при удалении Юзера, с базы должена удалиться и кар, относящася к этому юзеру
-    @JoinColumn(name = "car_id")                //forMentor*  Название колонки в таблице users
+    @OneToOne(cascade = CascadeType.ALL)         //forMentor*   обозначаю, что это поле 1к1, и явялется главнным, т.е. при удалении Юзера, с базы должена удалиться и кар, относящася к этому юзеру
+    @JoinColumn(name = "car_id")                //forMentor*   Название колонки в таблице users
     private Car car;
 
     public User(String firstName, String lastName, String email) {
