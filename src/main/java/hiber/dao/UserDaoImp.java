@@ -4,10 +4,12 @@ import hiber.model.Car;
 import hiber.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import java.sql.ResultSet;
 import java.util.List;
 
 @Repository
@@ -30,10 +32,10 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUserByCar(Car car){
-        try (Session session = sessionFactory.openSession()) {
-            System.out.println("Достаёт юзера из базы данных по машине");   //TODO getUserByCar() "C этим думаю разберусь"
-        }
-        return null;
+            Query query = sessionFactory.getCurrentSession().createQuery("from User where car.model=:model and car.series=:series")
+                    .setParameter("model", car.getModel())
+                    .setParameter("series", car.getSeries());
+        return query.getResultList().isEmpty() ? null : (User) query.getResultList().stream().findAny().get();
     }
 
 }
